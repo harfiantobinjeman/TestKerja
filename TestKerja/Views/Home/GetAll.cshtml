@@ -1,0 +1,32 @@
+﻿@model TestKerja.Models.Users
+@using X.PagedList;
+@{
+    ViewData["Title"] = "Home Page";
+    var no = 1;
+}
+
+<div class="text-center">
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Email</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+    </tr>
+  </thead>
+        @foreach (var item in Model.data)
+        {
+              <tbody>
+                <tr>
+                  <th scope="row">@no</th>
+                  <td>@item.email</td>
+                  <td>@item.first_name</td>
+                  <td>@item.last_name</td>
+                </tr>
+              </tbody>
+            no++;
+        }
+
+</table>
+</div>

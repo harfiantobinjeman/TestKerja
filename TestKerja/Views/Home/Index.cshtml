@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="email" class="form-control" />
+        <label class="form-label" for="form2Example1">Email address</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="pass" class="form-control" />
+        <label class="form-label" for="form2Example2">Password</label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn btn-primary btn-block mb-4" onclick="LoginTest()">Sign in</button>
+    </form>
+</div>
+
+<script>
+    function LoginTest(){
+        $(document).ready(function () {
+
+            let email = $('#email').val();
+            let password = $('#pass').val();
+            $.ajax({
+                type: 'POST',
+                url: '/Home/Index/?email='+ email + '&password='+password
+            });
+        });
+    }
+</script>
