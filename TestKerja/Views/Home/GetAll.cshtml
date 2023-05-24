@@ -2,7 +2,7 @@
 @using X.PagedList;
 @{
     ViewData["Title"] = "Home Page";
-    var no = 1;
+    int noPagi = 1;
 }
 
 <div class="text-center">
@@ -19,14 +19,35 @@
         {
               <tbody>
                 <tr>
-                  <th scope="row">@no</th>
+                  <th scope="row">@item.id</th>
                   <td>@item.email</td>
                   <td>@item.first_name</td>
                   <td>@item.last_name</td>
                 </tr>
               </tbody>
-            no++;
         }
-
 </table>
+
+@for (int i = 0; i < Model.total_pages; i++)
+    {
+        <button onclick="pagination(@noPagi)">@noPagi</button>
+
+        noPagi++;
+    }
+
 </div>
+<script>
+    function pagination(a){
+        var page = a;
+        $.ajax({
+            url: 'GetAll/'+page,
+            type: 'get',
+            success: function(response){
+                window.location.href = "http://localhost:5150/Home/GetAll?page="+page;
+            },
+            error: function (resultCari) {
+                console.log("aaaaaa")
+            }
+        });
+    }
+</script>
