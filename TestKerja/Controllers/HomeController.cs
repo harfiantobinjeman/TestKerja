@@ -19,9 +19,9 @@ namespace TestKerja.Controllers
             this.httpClient = httpClient;
         }
 
-        public async Task<ActionResult> Index(string email,string password)
+        public async Task<ActionResult> Index()
         {
-            string emails = "eve.holt@reqres.in";
+            /*string emails = "eve.holt@reqres.in";
             string passwords = "cityslicka";
             string url = "https://reqres.in/api/login";
             var req = (HttpWebRequest)WebRequest.Create(url);
@@ -35,10 +35,11 @@ namespace TestKerja.Controllers
             else
             {
                 return View(Index);
-            }
+            }*/
+                return View();
         }
 
-        public async Task<ActionResult> GetAll(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No)
+            public async Task<ActionResult> GetAll(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No)
         {
 
             ViewBag.CurrentSortOrder = Sorting_Order;
@@ -104,24 +105,6 @@ namespace TestKerja.Controllers
                 return View(UsersInfo);
             }
         }
-
-        /*        public async Task<IEnumerable<Users>> GetAllUser()
-                {
-                    {
-                        try
-                        {
-                            var user = await this.httpClient.GetFromJsonAsync<IEnumerable<Users>>("https://reqres.in/api/users?page=2");
-                            return user;
-                        }
-                        catch (Exception)
-                        {
-
-                            throw;
-                        }
-                    }
-                }*/
-
-
 
         public IActionResult Privacy()
         {

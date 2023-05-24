@@ -3,7 +3,7 @@
 }
 
 <div class="text-center">
-    <form>
+    <form action="IndexLogin">
       <!-- Email input -->
       <div class="form-outline mb-4">
         <input type="email" id="email" class="form-control" />
@@ -24,12 +24,22 @@
 <script>
     function LoginTest(){
         $(document).ready(function () {
-
             let email = $('#email').val();
             let password = $('#pass').val();
             $.ajax({
                 type: 'POST',
-                url: '/Home/Index/?email='+ email + '&password='+password
+                url: 'https://reqres.in/api/login/',
+                data: {
+                    email,
+                    password
+                },
+                success: function (resultCari) {
+                    window.location.href = "http://localhost:5150/Home/GetAll";
+                },
+                error: function (resultCari) {
+                    window.location.href = "http://localhost:5150";
+                }
+
             });
         });
     }
